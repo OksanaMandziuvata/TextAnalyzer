@@ -1,6 +1,19 @@
+using Microsoft.EntityFrameworkCore;
+using TextAnalyzer.Api.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+if (string.IsNullOrWhiteSpace(connectionString))
+{
+    throw new InvalidOperationException(
+        "Set the ConnectionStrings:DefaultConnection configuration value.");
+}
+
+builder.Services.AddDbContext<TextAnalyzerDbContext>(options =>
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
