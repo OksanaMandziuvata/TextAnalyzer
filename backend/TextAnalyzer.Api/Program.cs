@@ -12,7 +12,7 @@ if (string.IsNullOrWhiteSpace(connectionString))
         "Set the ConnectionStrings:DefaultConnection configuration value.");
 }
 
-builder.Services.AddDbContext<TextAnalyzerDbContext>(options =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 builder.Services.AddEndpointsApiExplorer();

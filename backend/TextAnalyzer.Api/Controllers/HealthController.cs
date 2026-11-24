@@ -7,9 +7,9 @@ namespace TextAnalyzer.Api.Controllers;
 [Route("api/[controller]")]
 public class HealthController : ControllerBase
 {
-    private readonly TextAnalyzerDbContext _dbContext;
+    private readonly ApplicationDbContext _dbContext;
 
-    public HealthController(TextAnalyzerDbContext dbContext)
+    public HealthController(ApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }
