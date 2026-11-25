@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using TextAnalyzer.Api.Data;
+using TextAnalyzer.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
+builder.Services.AddScoped<TextAnalysisService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 if (string.IsNullOrWhiteSpace(connectionString))
