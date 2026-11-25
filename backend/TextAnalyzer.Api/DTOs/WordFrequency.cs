@@ -1,8 +1,4 @@
 namespace TextAnalyzer.Api.DTOs;
 
-public class WordFrequency
-{
-    public string Word { get; set; } = string.Empty;
-
-    public int Count { get; set; }
-}
+/// <summary>Word and number of occurrences in analyzed text.</summary>
+public sealed record WordFrequency(string Word, int Count);

@@ -55,7 +55,7 @@ public class ApplicationDbContext : DbContext
             entity.HasKey(result => result.Id);
 
             entity.Property(result => result.LongestWord)
-                .HasMaxLength(500)
+                .HasMaxLength(2 * 1024 * 1024)
                 .IsRequired();
             entity.Property(result => result.WordFrequenciesJson)
                 .HasColumnType("jsonb")

@@ -98,11 +98,7 @@ public class TextAnalysisService
                 .OrderByDescending(frequency => frequency.Value)
                 .ThenBy(frequency => frequency.Key, StringComparer.Ordinal)
                 .Take(MostFrequentWordLimit)
-                .Select(frequency => new WordFrequency
-                {
-                    Word = frequency.Key,
-                    Count = frequency.Value
-                })
+                .Select(frequency => new WordFrequency(frequency.Key, frequency.Value))
                 .ToList();
         }
 

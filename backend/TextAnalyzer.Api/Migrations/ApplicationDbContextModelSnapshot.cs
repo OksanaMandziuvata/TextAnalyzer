@@ -17,7 +17,7 @@ namespace TextAnalyzer.Api.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.12")
+                .HasAnnotation("ProductVersion", "10.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -33,8 +33,8 @@ namespace TextAnalyzer.Api.Migrations
 
                     b.Property<string>("LongestWord")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
+                        .HasMaxLength(2097152)
+                        .HasColumnType("character varying(2097152)");
 
                     b.Property<int>("SentenceCount")
                         .HasColumnType("integer");

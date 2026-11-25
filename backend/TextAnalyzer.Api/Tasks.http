@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:5178
+@taskId = 00000000-0000-0000-0000-000000000000
+
+### Upload a TXT file and analyze word frequencies
+POST {{baseUrl}}/api/tasks
+Content-Type: multipart/form-data; boundary=TextAnalyzerBoundary
+
+--TextAnalyzerBoundary
+Content-Disposition: form-data; name="file"; filename="sample.txt"
+Content-Type: text/plain
+
+Hello world. Hello programming!
+--TextAnalyzerBoundary
+Content-Disposition: form-data; name="analysisType"
+
+Frequency
+--TextAnalyzerBoundary--
+
+### Get task history
+GET {{baseUrl}}/api/tasks
+
+### Get task details
+GET {{baseUrl}}/api/tasks/{{taskId}}
+
+### Get saved analysis result
+GET {{baseUrl}}/api/tasks/{{taskId}}/result
+
+### Verify missing task returns 404
+GET {{baseUrl}}/api/tasks/00000000-0000-0000-0000-000000000000

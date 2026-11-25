@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<TextAnalysisService>();
+builder.Services.AddScoped<ITaskService, TaskService>();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 if (string.IsNullOrWhiteSpace(connectionString))
@@ -43,3 +44,7 @@ app.UseCors("ReactClient");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+
+public partial class Program
+{
+}
